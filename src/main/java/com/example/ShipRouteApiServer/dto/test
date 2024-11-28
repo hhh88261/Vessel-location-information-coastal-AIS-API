@@ -1,0 +1,15 @@
+ while (!current.isAfter(EndTime)) {
+                    // 현재 시간을 HH:mm:ss 형식으로 변환
+                    String currentTimeStamp = current.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+                    // current 시간과 일치하는 데이터가 있을 경우 출력
+                    for (ShipResultDTO record : data) {
+                        if (record.getShipTime().equals(currentTimeStamp)) {
+                            // 일치하는 데이터 출력
+                            System.out.println(current + " " + record);
+                        }
+                    }
+
+                    // current 시간을 1초 증가
+                    current = current.plusSeconds(1);
+                }
