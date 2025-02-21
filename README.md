@@ -3,6 +3,10 @@
 ## 소개
 과거 선박 경로 정보를 제공하는 API 서비스
 
+## 참조 사이트
+- AIVDM 신호 설명서    
+https://gpsd.gitlab.io/gpsd/AIVDM.html
+
 ## 기술스택
 - JAVA 21.0.5 
 - SringBoot 3.3.5
