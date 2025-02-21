@@ -77,8 +77,7 @@ public class ShipController {
                             if (jsonData != null) {
                                 System.out.println(timeStamp + ": " + result);
                                 System.out.println(jsonData.toString(4));
-                                emitter.send(SseEmitter.event()
-                                        .data(jsonData.toString(4)));
+                                emitter.send(jsonData.toString());
                             } else {
                                 System.out.println("Parsed JSON is null");
                             }
