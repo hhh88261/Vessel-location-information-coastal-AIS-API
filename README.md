@@ -3,9 +3,15 @@
 ## 소개
 과거 선박 경로 정보를 제공하는 API 서비스
 
-## 기술스택
+## 요구사항
 - JAVA 21.0.5 
 - SringBoot 3.3.5
+
+## 실행 가이드
+```
+git clone https://github.com/hhh88261/Vessel-location-information-coastal-AIS-API.git 
+cd Vessel-location-information-coastal-AIS-API
+```
 
 ## API 명세서
 
