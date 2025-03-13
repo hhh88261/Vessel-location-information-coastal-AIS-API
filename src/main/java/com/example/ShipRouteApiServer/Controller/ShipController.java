@@ -52,6 +52,15 @@ public class ShipController {
                 List<ShipResultDTO> data = shipService.findShipRoute(shipDate, StartTimeStamp, EndTimeStamp);
                 System.out.println(data.size());
 
+                // 데이터가 없을 경우 에러 메시지 전송
+                if (data.isEmpty()) {
+                    JSONObject errorMessage = new JSONObject();
+                    errorMessage.put("error", "조회된 데이터가 없습니다.");
+                    emitter.send(errorMessage.toString());
+                    emitter.complete(); // Emitter 완료
+                    return; // 더 이상의 처리를 중단
+                }
+
                 // SHIP_TIME을 초 단위로 조회
                 while (!current.isAfter(EndTime)) {
 
