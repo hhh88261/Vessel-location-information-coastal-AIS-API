@@ -60,7 +60,6 @@ public class ShipController {
                     emitter.complete(); // Emitter 완료
                     return; // 더 이상의 처리를 중단
                 }
-
                 // SHIP_TIME을 초 단위로 조회
                 while (!current.isAfter(EndTime)) {
 
