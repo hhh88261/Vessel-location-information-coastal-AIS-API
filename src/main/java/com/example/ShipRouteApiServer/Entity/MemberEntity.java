@@ -3,6 +3,8 @@ package com.example.ShipRouteApiServer.Entity;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 
 // 신규회원 엔티티
@@ -10,10 +12,15 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "accounts")
+@Getter
+@Setter
 public class MemberEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long name;
-    private String email;
+    private int id;
+    private String loginId;
     private String password;
+    private String email;
+    private String role;
+
 }

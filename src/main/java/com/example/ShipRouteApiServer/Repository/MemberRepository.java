@@ -8,8 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
+public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
 
-    // 이메일로 사용자 조회
-    Optional<MemberEntity> findByEmail(String email);
+    // 아이디와 패스워드로 사용자 조회
+
+
+    // 회원가입시 동일한 아이디가 있는지 확인
+    Boolean existsByLoginId(String loginid);
 }
