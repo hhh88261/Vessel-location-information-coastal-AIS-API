@@ -3,19 +3,26 @@ package com.example.ShipRouteApiServer.Service;
 import com.example.ShipRouteApiServer.Entity.MemberEntity;
 import com.example.ShipRouteApiServer.Repository.MemberRepository;
 import com.example.ShipRouteApiServer.dto.Member.JoinDTO;
+import com.example.ShipRouteApiServer.dto.Member.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
-public class MemberService {
+public class MemberService implements UserDetailsService {
 
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // 생성자를 통해 MemberRepository 주입
-    public MemberService(MemberRepository memberRepository){
+    public MemberService(MemberRepository memberRepository,BCryptPasswordEncoder bCryptPasswordEncoder ) {
+
         this.memberRepository = memberRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+
     }
 
     /* 회원가입 기능
@@ -39,7 +46,7 @@ public class MemberService {
 
         // 각 데이터 삽입
         memberData.setLoginId(loginid);
-        memberData.setPassword(password);
+        memberData.setPassword(bCryptPasswordEncoder.encode(password));
         memberData.setEmail(email);
         memberData.setRole("TestRole");
 
@@ -47,4 +54,17 @@ public class MemberService {
         memberRepository.save(memberData);
     }
 
+    /* 로그인 기능
+     *
+     */
+    @Override
+    public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
+
+        MemberEntity loginData = memberRepository.findByLoginId(loginId);
+
+        if (loginData == null) {
+            return new LoginDTO(loginData);
+        }
+        return new LoginDTO(loginData);
+    }
 }

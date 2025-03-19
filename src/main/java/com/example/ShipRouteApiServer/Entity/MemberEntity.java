@@ -16,11 +16,17 @@ import lombok.Setter;
 @Setter
 public class MemberEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customers_seq")
+    @SequenceGenerator(name = "customers_seq", sequenceName = "customers_seq", allocationSize = 1)
+    private Integer id;
+
+    @Column(name = "loginid") // 컬럼명 명확히 지정
     private String loginId;
+
     private String password;
+
     private String email;
+
     private String role;
 
 }

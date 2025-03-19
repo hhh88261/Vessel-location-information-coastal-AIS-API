@@ -33,6 +33,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String username = obtainUsername(request);
         String password = obtainPassword(request);
 
+        System.out.println(username);
+
         // Susername과 password 검증을 위해 Token에 담기
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password,null);
 
@@ -42,10 +44,13 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     // 로그인 성공
     @Override
-    protected void loginSuccessful(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication){
-
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication){
+        System.out.println("success");
     }
 
     // 로그인 실패
     @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed){
+        System.out.println("fail");
+    }
 }

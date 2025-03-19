@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 // 회원가입 API
 @RestController
-@RequestMapping("/api")
+@RequestMapping
 public class MemberController {
     private MemberService memberService;
 

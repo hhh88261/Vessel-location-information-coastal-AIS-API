@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
 
     // 아이디와 패스워드로 사용자 조회
-
+    MemberEntity findByLoginId(String loginid);
 
     // 회원가입시 동일한 아이디가 있는지 확인
     Boolean existsByLoginId(String loginid);

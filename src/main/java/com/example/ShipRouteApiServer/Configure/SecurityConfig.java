@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
 
-    //AuthenticationManager가 인자로 받을 AuthenticationConfiguraion 객체 생성자 주입
     private final AuthenticationConfiguration authenticationConfiguration;
 
     public SecurityConfig(AuthenticationConfiguration authenticationConfiguration) {
@@ -26,7 +25,6 @@ public class SecurityConfig {
         this.authenticationConfiguration = authenticationConfiguration;
     }
 
-    //AuthenticationManager Bean 등록
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
 
@@ -57,7 +55,6 @@ public class SecurityConfig {
                         .requestMatchers("/login", "/", "/join").permitAll()
                         .anyRequest().authenticated());
 
-//필터 추가 LoginFilter()는 인자를 받음 (AuthenticationManager() 메소드에 authenticationConfiguration 객체를 넣어야 함) 따라서 등록 필요
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration)), UsernamePasswordAuthenticationFilter.class);
 
