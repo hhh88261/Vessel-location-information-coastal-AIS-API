@@ -1,5 +1,6 @@
 package com.example.ShipRouteApiServer.jwt;
 
+import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,9 +33,19 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String username = obtainUsername(request);
         String password = obtainPassword(request);
 
-        // Spring Security에서 username과 password 검증을 위해 Token에 담기
+        // Susername과 password 검증을 위해 Token에 담기
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password,null);
 
+        // authenticationManager로 Token을 보내 검증
         return authenticationManager.authenticate(authenticationToken);
     }
+
+    // 로그인 성공
+    @Override
+    protected void loginSuccessful(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication){
+
+    }
+
+    // 로그인 실패
+    @Override
 }
