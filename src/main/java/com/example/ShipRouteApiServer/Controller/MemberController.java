@@ -16,16 +16,15 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+
     /*
      * 회원가입
-     *
+     * 클라이언트에서 빋은 JoinDTO를 Service 호출 후 전달
      */
-
     @PostMapping("/join")
     public String testJoin(JoinDTO joinDTO) {
-
         memberService.joinProcess(joinDTO);
-        return "sucsess";
+        return "success";
     }
 
 }
