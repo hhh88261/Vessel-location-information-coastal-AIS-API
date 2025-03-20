@@ -63,7 +63,7 @@ public class MemberService implements UserDetailsService {
         MemberEntity loginData = memberRepository.findByLoginId(loginId);
 
         if (loginData == null) {
-            return new LoginDTO(loginData);
+            throw new UsernameNotFoundException(loginId);
         }
         return new LoginDTO(loginData);
     }

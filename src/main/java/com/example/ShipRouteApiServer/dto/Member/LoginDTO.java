@@ -1,15 +1,10 @@
 package com.example.ShipRouteApiServer.dto.Member;
 
 import com.example.ShipRouteApiServer.Entity.MemberEntity;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.ArrayList;
 import java.util.Collection;
-
-
 
 public class LoginDTO implements UserDetails {
 
@@ -41,4 +36,6 @@ public class LoginDTO implements UserDetails {
     public String getPassword() {
         return memberEntity.getPassword();
     }
+
+
 }
