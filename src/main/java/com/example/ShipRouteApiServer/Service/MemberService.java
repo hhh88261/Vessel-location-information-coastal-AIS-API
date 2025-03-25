@@ -19,10 +19,8 @@ public class MemberService implements UserDetailsService {
 
     // 생성자를 통해 MemberRepository 주입
     public MemberService(MemberRepository memberRepository,BCryptPasswordEncoder bCryptPasswordEncoder ) {
-
         this.memberRepository = memberRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-
     }
 
     /* 회원가입 기능
