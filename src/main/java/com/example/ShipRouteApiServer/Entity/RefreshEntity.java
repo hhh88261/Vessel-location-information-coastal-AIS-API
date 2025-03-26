@@ -2,31 +2,25 @@ package com.example.ShipRouteApiServer.Entity;
 
 
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
-
-// 신규회원 엔티티
-// 엔티티는 데이터베이스와 자바 객체를 매핑해주는 역할
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
-@Table(name = "accounts")
+@Table(name = "refreshtoken")
 @Getter
 @Setter
-public class MemberEntity {
+public class RefreshEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customers_seq")
     @SequenceGenerator(name = "customers_seq", sequenceName = "customers_seq", allocationSize = 1)
-    private Integer id;
+    private Long id;
 
     @Column(name = "loginid")
-    private String loginId;
+    private String loginid;
 
-    private String password;
+    private String refresh;
 
-    private String email;
-
-    private String role;
-
+    private String expiration;
 }

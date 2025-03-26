@@ -9,7 +9,7 @@ public class ApiConfigure implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080", "http://localhost:8888") // 두 포트를 모두 허용
+                .allowedOrigins("http://localhost:8080") // 두 포트를 모두 허용
                 .allowedMethods("*")
                 .allowCredentials(true)
                 .maxAge(3000);

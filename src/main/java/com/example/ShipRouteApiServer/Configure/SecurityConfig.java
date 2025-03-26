@@ -1,6 +1,9 @@
 package com.example.ShipRouteApiServer.Configure;
 
 
+import com.example.ShipRouteApiServer.Repository.RefreshRepositroy;
+import com.example.ShipRouteApiServer.jwt.CustomLogoutFilter;
+import com.example.ShipRouteApiServer.jwt.JWTFilter;
 import com.example.ShipRouteApiServer.jwt.JWTUtil;
 import com.example.ShipRouteApiServer.jwt.LoginFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,25 +17,26 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import java.util.Collection;
 import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-
+    private final RefreshRepositroy refreshRepositroy;
     private final AuthenticationConfiguration authenticationConfiguration;
 
     private final JWTUtil jwtUtil;
 
-    public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jwtUtil) {
+    public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jwtUtil, RefreshRepositroy refreshRepositroy) {
 
         this.authenticationConfiguration = authenticationConfiguration;
         this.jwtUtil = jwtUtil;
+        this.refreshRepositroy = refreshRepositroy;
     }
 
     @Bean
@@ -56,7 +60,7 @@ public class SecurityConfig {
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                         CorsConfiguration configuration = new CorsConfiguration();
 
-                        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8888"));
+                        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));
                         configuration.setAllowedMethods(Collections.singletonList("*"));
                         configuration.setAllowCredentials(true);
                         configuration.setAllowedHeaders(Collections.singletonList("*"));
@@ -71,6 +75,9 @@ public class SecurityConfig {
                 .csrf((auth) -> auth.disable());
 
         http
+                .addFilterAt(new JWTFilter(jwtUtil), LoginFilter.class);
+
+        http
                 .formLogin((auth) -> auth.disable());
 
         http
@@ -79,10 +86,14 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/login", "/", "/join").permitAll()
+                        .requestMatchers("/reissue").permitAll()
                         .anyRequest().authenticated());
 
         http
-                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, refreshRepositroy), UsernamePasswordAuthenticationFilter.class);
+
+        http
+                .addFilterAt(new CustomLogoutFilter(jwtUtil, refreshRepositroy), LogoutFilter.class);
 
         http
                 .sessionManagement((session) -> session
