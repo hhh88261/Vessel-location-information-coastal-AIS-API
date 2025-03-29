@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.3">
   <diagram name="페이지-1" id="ohFJUPMfbBcsTriV_gxZ">
-    <mxGraphModel dx="2839" dy="991" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3912" dy="1520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -111,7 +111,7 @@
         <mxCell id="TXO7l7RWH610JMDfSceN-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="TXO7l7RWH610JMDfSceN-21" target="TXO7l7RWH610JMDfSceN-22">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="TXO7l7RWH610JMDfSceN-21" value="SignUp Service" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="TXO7l7RWH610JMDfSceN-21" value="Member Service" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="503" y="920" width="110" height="35" as="geometry" />
         </mxCell>
         <mxCell id="TXO7l7RWH610JMDfSceN-22" value="Member Repository" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
