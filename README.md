@@ -57,6 +57,7 @@ Keep-Alive : timeout=60
 Connection : keep-alive
 
 ```
+- access에서 Access Token을 확인할 수 있습니다.
 
 Exmaple cookie response
 
@@ -68,9 +69,9 @@ Path : /
 Expires : Web, 30 Apr 2025 13:00:19 GMT
 HttpOnly : true
 Secure : false
-
 ```
 
+- Cookie에서 Refresh Token을 확인할 수 있습니다.
 
 날짜
 - 날짜와 시간은 과거 선박의 경로를 조회할 때 사용됩니다.
@@ -84,7 +85,6 @@ Request Field
 |shipDate|String|2025-02-19|
 |startTime|Int|21|
 |endTime|Int|23|
-
 
 Example request
 ```
