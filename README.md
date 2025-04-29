@@ -73,6 +73,8 @@ Secure : false
 
 - Cookie에서 Refresh Token을 확인할 수 있습니다.
 
+- - -
+
 날짜
 - 날짜와 시간은 과거 선박의 경로를 조회할 때 사용됩니다.
 
