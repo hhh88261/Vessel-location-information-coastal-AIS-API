@@ -18,7 +18,7 @@ cd Vessel-location-information-coastal-AIS-API
 
 로그인
 - username, password를 포함한 필드를 JSON 형태로 넘겨줍니다.
-- 로그인에 성공하면 Refresh Token과 Access Token을 받을 수 있습니다.
+- 로그인에 성공 시 JWT가 Refresh Token과 Access Token를 발급합니다.
 
 Request Field 
 |Path|Type|Description|
