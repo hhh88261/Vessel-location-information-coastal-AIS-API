@@ -75,7 +75,9 @@ Secure : false
 
 - Cookie에서 Refresh Token을 확인할 수 있습니다.
 에러 처리
-
+- String 외에 다른 데이터 타입의 문자 입력 에러는 프론트에서 처리
+- 서버 내 "로그인 실패" 메시지 출력
+- 401 오류 반환
 
 - - -
 <과거 항적 조회>
@@ -128,9 +130,7 @@ Connection : keep-alive
 ```
 
 에러 처리
-- String 외에 다른 데이터 타입의 문자 입력 에러는 프론트에서 처리
-- 서버 내 "로그인 실패" 메시지 출력
-- 401 오류 반환
+- 조회된 데이터가 없을 시 아래와 같은 메시지를 반환합니다.
 
 Request Field 
 |Path|Type|Description|
