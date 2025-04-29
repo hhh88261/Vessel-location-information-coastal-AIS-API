@@ -14,7 +14,63 @@ git clone https://github.com/hhh88261/Vessel-location-information-coastal-AIS-AP
 cd Vessel-location-information-coastal-AIS-API
 ```
 
-## API 명세서
+## 명세서
+
+로그인
+- username, password를 포함한 필드를 JSON 형태로 넘겨줍니다.
+- 로그인에 성공하면 Refresh Token과 Access Token을 받을 수 있습니다.
+
+Request Field 
+|Path|Type|Description|
+|-----|-----|-----|
+|username|String|"admin"|
+|password|String|"1234"|
+
+Example request
+```
+GET http://localhost:8888/login
+content type: json
+
+{
+  username : "admin3"
+  password : "1234"
+}
+```
+
+Example response
+
+```
+vary : Origin 
+vary : Access-Control-Request-Method
+vary : Access-Control-Request-Headers
+access : eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiYWRtaW4zIiwicm9sZSI6IlRlc3RSb2xlIiwiaWF0IjoxNzQ1OTMzOTE1LCJleHAiOjE3NDU5MzQ1MTV9.sqYdf2_r84qHCYu7aRjAjd6_iG2vpCIBjqDJ-Pdx5e4
+Set-Cookie : refresh=eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6InJlZnJlc2giLCJ1c2VybmFtZSI6ImFkbWluMyIsInJvbGUiOiJUZXN0Um9sZSIsImlhdCI6MTc0NTkzMzkxNSwiZXhwIjoxNzQ2MDIwMzE1fQ.lFo1jneMNtp6EzgZKNL3ZdKY7AXup5_DcUcq29rPNmA; Max-Age=86400; Expires=Wed, 30 Apr 2025 13:38:35 GMT;
+X-Content-Type-Options : nosniff
+X-Content-Type-Options : 0
+Cache-Control : no-cache, no-store, max-age=0, must-revalidate
+Pragma : no-cache
+Expires : 0
+X-Frame-Options : DENY
+Content-Length : 0
+Date : Tue, 29 Apr 2025 13:38:35 GMT
+Keep-Alive : timeout=60
+Connection : keep-alive
+
+```
+
+Exmaple cookie response
+
+```
+Name : Refresh
+Value : eyJhdGco...
+Domain : Localhost
+Path : /
+Expires : Web, 30 Apr 2025 13:00:19 GMT
+HttpOnly : true
+Secure : false
+
+```
+
 
 날짜
 - 날짜와 시간은 과거 선박의 경로를 조회할 때 사용됩니다.
@@ -92,3 +148,9 @@ Connection : keep-alive
 }
 
 >>>>>>> 9b72395d8504257f7d3e08d5c216e87766cf7d66
+
+```
+
+
+
+
