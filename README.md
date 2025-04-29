@@ -74,6 +74,8 @@ Secure : false
 ```
 
 - Cookie에서 Refresh Token을 확인할 수 있습니다.
+에러 처리
+
 
 - - -
 <과거 항적 조회>
@@ -125,8 +127,9 @@ Connection : keep-alive
 } 
 ```
 
-에러
-- 조회된 정보가 없을 때 아래와 같은 메시지를 출력합니다.
+에러 처리
+- 서버 내 "로그인 실패" 메시지 출력
+- 401 오류 반환
 
 Request Field 
 |Path|Type|Description|
