@@ -16,7 +16,9 @@ cd Vessel-location-information-coastal-AIS-API
 
 ## 명세서
 
-로그인
+<로그인 요청>
+
+로그인(POST) 
 - username, password를 포함한 필드를 JSON 형태로 넘겨줍니다.
 - 로그인에 성공 시 JWT가 Refresh Token과 Access Token를 발급합니다.
 
@@ -74,12 +76,10 @@ Secure : false
 - Cookie에서 Refresh Token을 확인할 수 있습니다.
 
 - - -
+<과거 항적 조회>
 
-과거 항적 조회
+과거 항적 조회(GET)
 - 날짜와 시간을 포함한 필드를 넘겨 결과를 요청합니다.
-
-요청
-- `GET` 요청을 통해 DB를 조회합니다.
 
 Request Field 
 |Path|Type|Description|
