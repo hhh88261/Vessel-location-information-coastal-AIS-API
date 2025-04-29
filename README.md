@@ -1,7 +1,8 @@
 # Vessel-location-information-coastal-AIS-API
 
 ## 소개
-과거 선박 경로 정보를 제공하는 API 서비스
+- 선박라이브서비스의 API 서버 입니다.
+- 사용자의 로그인,회원가입,과거항적 조회 요청을 처리합니다.
 
 ## 요구사항
 - JAVA 21.0.5 
