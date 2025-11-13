@@ -10,7 +10,6 @@ public interface RefreshRepositroy extends JpaRepository<RefreshEntity, Long> {
     Boolean existsByRefresh(String refresh);
 
     // refresh 토큰 삭제
-
     @Transactional
     void deleteByRefresh(String refresh);
 

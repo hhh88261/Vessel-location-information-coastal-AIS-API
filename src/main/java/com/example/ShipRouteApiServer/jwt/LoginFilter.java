@@ -54,7 +54,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         System.out.println(username);
         System.out.println(password);
 
-        // Susername과 password 검증을 위해 Token에 담기
+        // username과 password 검증을 위해 Token에 담기
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password,null);
 
         // authenticationManager로 Token을 보내 검증
@@ -98,10 +98,10 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         refreshRepository.save(refreshEntity);
     }
 
-
     // 로그인 실패
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed){
+        System.out.println("로그인 실패");
         response.setStatus(401);
     }
 

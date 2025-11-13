@@ -16,8 +16,7 @@ import lombok.Setter;
 @Setter
 public class MemberEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customers_seq")
-    @SequenceGenerator(name = "customers_seq", sequenceName = "customers_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "loginid")

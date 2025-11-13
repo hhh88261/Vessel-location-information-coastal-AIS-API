@@ -4,7 +4,6 @@ import com.example.ShipRouteApiServer.Entity.MemberEntity;
 import com.example.ShipRouteApiServer.Repository.MemberRepository;
 import com.example.ShipRouteApiServer.dto.Member.JoinDTO;
 import com.example.ShipRouteApiServer.dto.Member.LoginDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,13 +11,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MemberService implements UserDetailsService {
+public class JoinService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // 생성자를 통해 MemberRepository 주입
-    public MemberService(MemberRepository memberRepository,BCryptPasswordEncoder bCryptPasswordEncoder ) {
+    public JoinService(MemberRepository memberRepository, BCryptPasswordEncoder bCryptPasswordEncoder ) {
         this.memberRepository = memberRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -27,9 +26,11 @@ public class MemberService implements UserDetailsService {
      * 회원정보를 담고 있는 JoinDTO
      */
     public void joinProcess(JoinDTO joinDTO) {
-        String loginid = joinDTO.getLoginId();
+        String loginid = joinDTO.getUsername();
         String password = joinDTO.getPassword();
         String email = joinDTO.getEmail();
+
+        System.out.println(loginid + password + email);
 
         // 로그인 ID로 회원이 존재하는지 확인
         Boolean idExist = memberRepository.existsByLoginId(loginid);

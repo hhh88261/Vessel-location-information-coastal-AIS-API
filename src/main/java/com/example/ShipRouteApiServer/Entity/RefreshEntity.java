@@ -13,8 +13,7 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 public class RefreshEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customers_seq")
-    @SequenceGenerator(name = "customers_seq", sequenceName = "customers_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "loginid")

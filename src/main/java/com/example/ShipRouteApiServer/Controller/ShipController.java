@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
+// 과거 항로 조회 API
 @RestController
 @RequestMapping("/api")
 public class ShipController {
@@ -94,12 +96,11 @@ public class ShipController {
                         }
                     });
                     current = current.plusSeconds(1);
-                }
-            }
-            catch (Exception e) {
+                } emitter.complete();
+            } catch (Exception e) {
                 emitter.completeWithError(e);
                 System.out.println("예외");
-            }emitter.complete();
+            }
         }).start();
         return emitter;
     }

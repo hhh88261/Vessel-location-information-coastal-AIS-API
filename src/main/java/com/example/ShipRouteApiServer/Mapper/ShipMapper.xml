@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ShipRouteApiServer.Mapper.ShipMapper">
+
+    <select id="findShipRoute" resultType="com.example.ShipRouteApiServer.dto.ShipResultDTO">
+        SELECT Mmsi, Lon, Lat, TRUE_HEAD, SHIP_TIME
+        FROM
+            ${'shiproute_' + shipDate}
+        WHERE SHIP_TIME BETWEEN TO_DATE(#{startTime}, 'HH24:MI:SS')
+            AND TO_DATE(#{endTime}, 'HH24:MI:SS')
+          AND TRUNC(DATE_RATE) = TO_DATE(#{shipDate}, 'YYYY-MM-DD')
+    </select>
+
+</mapper>
